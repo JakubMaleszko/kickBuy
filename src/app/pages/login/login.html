@@ -1,0 +1,26 @@
+<div class="container">
+    <form class="container-form" [formGroup]="loginForm" (ngSubmit)="login()">
+        <span class="container-form-heading">KickBuy</span>
+        <span class="container-form-subheading">Log in</span>
+        @if (invalidCredentials()) {
+            <mat-error>Invalid username or password</mat-error>
+        }
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input type="text" matInput formControlName="username">
+            @if(loginForm.get('username')?.hasError('required')) { <mat-error></mat-error> }
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide() ? 'password' : 'text'" formControlName="passwd" />
+            <button matIconButton matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()">
+                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            @if(loginForm.get('passwd')?.hasError('required')) { <mat-error></mat-error> }
+            @if (loginForm.get('passwd')?.hasError('minlength')) { <mat-error>Password must contain 6 characters</mat-error> }
+        </mat-form-field>
+        <button type="submit" matButton="filled" [disabled]="loginForm.get('username')?.valid && loginForm.get('passwd')?.valid ? false : true">Login</button>
+        <span class="container-form-register">Don't have account <a routerLink="/register">Sign in</a></span>
+    </form>
+</div>

@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    &-form {
+        width: 40%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        &-heading {
+            font: var(--mat-sys-display-large);
+        }
+
+        &-subheading {
+            font: var(--mat-sys-display-small);
+            padding: 1rem;
+        }
+
+        &-register {
+            padding: 1rem;
+        }
+    }
+}
+
+.mat-mdc-form-field {
+    width: 60%;
+    margin: 0.3rem;
+}
+
+.mat-mdc-unelevated-button {
+    width: 30%;
+    height: 3rem;
+}
+
+@media only screen and (max-width: 767px) {
+    .container {
+        &-form {
+            width: 100%;
+        }
+    }
+
+    .mat-mdc-form-field {
+        width: 80%;
+        margin: 0.3rem;
+    }
+}
