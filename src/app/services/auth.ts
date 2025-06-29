@@ -7,9 +7,9 @@ import { catchError, map, Observable, of, retry } from 'rxjs';
 })
 export class Auth {
   readonly http = inject(HttpClient);
-
+  readonly baseUrl = 'https://dummyjson.com/auth'
   login(username: string, passwd: string): Observable<boolean> {
-    return this.http.post('https://dummyjson.com/auth/login', { username: username, password: passwd }).pipe(
+    return this.http.post(`${this.baseUrl}/login`, { username: username, password: passwd }).pipe(
       map((res: any) => {
         localStorage.setItem('token', res.accessToken);
         localStorage.setItem('refToken', res.refreshToken);
@@ -20,7 +20,7 @@ export class Auth {
   }
   refreshToken(): Observable<boolean> {
     const token = localStorage.getItem('refToken');
-    return this.http.post('https://dummyjson.com/auth/refresh', { refreshToken: token }).pipe(
+    return this.http.post(`${this.baseUrl}/refresh`, { refreshToken: token }).pipe(
       map((res: any) => {
         localStorage.setItem('token', res.accessToken);
         localStorage.setItem('refToken', res.refreshToken);
@@ -31,7 +31,7 @@ export class Auth {
   }
   isLoggedIn(): Observable<boolean> {
     if (localStorage.getItem('token')) {
-      return this.http.get('https://dummyjson.com/auth/me').pipe(
+      return this.http.get(`${this.baseUrl}/me`).pipe(
         map(() => {
           return true
         }),

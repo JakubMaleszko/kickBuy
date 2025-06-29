@@ -1,0 +1,45 @@
+.tile {
+    width: 100%;
+    height: 250px;
+    border: 1px solid var(--mat-sys-outline);
+    border-radius: var(--mat-sys-corner-small);
+    display: flex;
+
+    &-image {
+        flex: 0 0 250px; // fix width, don't grow/shrink
+        height: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+
+        &>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-color: white;
+        }
+    }
+
+    &-right {
+        flex: 1;
+        height: 100%;
+        padding: 0 1.5rem;
+        display: flex;
+        flex-direction: column;
+
+        &-top {
+            display: flex;
+            justify-content: space-between;
+
+            &-header,
+            &-price {
+                font: var(--mat-sys-headline-medium);
+            }
+            &-info{
+                padding: 1rem 0;
+            }
+        }
+
+
+        
+    }
+}

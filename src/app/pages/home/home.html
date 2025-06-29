@@ -1,1 +1,34 @@
-<p>home works!</p>
+<mat-toolbar>
+    <span>KickBuy</span>
+</mat-toolbar>
+@if (!store.loading()) {
+ @if (store.products().length > 0) {
+    <main class="main">
+      @for (product of store.products(); track product.id) {
+        <app-tile
+          [title]="product.title"
+          [price]="product.price"
+          [img]="product.thumbnail"
+          [rating]="product.rating"
+          [category]="product.category"
+          [brand]="product.brand"
+          [stock]="product.stock"
+        >
+          {{ product.description }}
+        </app-tile>
+      }
+    </main>
+  } @else if (store.error()) {
+    <div class="error-message">
+      <p>Error loading products: {{ store.error() }}</p>
+      <button mat-raised-button color="warn" (click)="store.getProducts()">Retry</button>
+    </div>
+  } @else {
+    <div class="no-products-message">
+      <p>No products found.</p>
+      </div>
+  }
+}
+@else{
+<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}
