@@ -1,34 +1,44 @@
-<mat-toolbar>
-    <span>KickBuy</span>
-</mat-toolbar>
 @if (!store.loading()) {
- @if (store.products().length > 0) {
-    <main class="main">
-      @for (product of store.products(); track product.id) {
-        <app-tile
-          [title]="product.title"
-          [price]="product.price"
-          [img]="product.thumbnail"
-          [rating]="product.rating"
-          [category]="product.category"
-          [brand]="product.brand"
-          [stock]="product.stock"
-        >
-          {{ product.description }}
-        </app-tile>
-      }
-    </main>
-  } @else if (store.error()) {
-    <div class="error-message">
-      <p>Error loading products: {{ store.error() }}</p>
-      <button mat-raised-button color="warn" (click)="store.getProducts()">Retry</button>
-    </div>
-  } @else {
-    <div class="no-products-message">
-      <p>No products found.</p>
-      </div>
+
+<form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()" class="search-form">
+  <mat-form-field subscriptSizing="dynamic" class="search-form-input">
+    <mat-label>Search</mat-label>
+    <input matInput formControlName="searchControl" placeholder="Search products..." />
+  </mat-form-field>
+  <button class="search-form-button" mat-fab color="primary" type="submit">
+    <mat-icon>search</mat-icon>
+  </button>
+</form>
+
+
+@if (store.products().length > 0) {
+<main class="main">
+  @for (product of store.products(); track product.id) {
+  <app-tile [title]="product.title" [price]="product.price" [img]="product.thumbnail" [link]="['/product', product.id]"
+    [rating]="product.rating" [category]="product.category" [brand]="product.brand" [stock]="product.stock">
+    {{ product.description }}
+  </app-tile>
   }
+
+</main>
+
+<mat-paginator [length]="store.totalProducts()" [pageSize]="store.pageSize()" [pageIndex]="store.currentPage() - 1"
+  (page)="onPageChange($event)" [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons>
+</mat-paginator>
+
+} @else if (store.error()) {
+<div class="error-message">
+  <p>Error loading products: {{ store.error() }}</p>
+  <button mat-raised-button color="warn" (click)="store.getProducts()">Retry</button>
+</div>
+} @else {
+<div class="no-products-message">
+  <p>No products found.</p>
+</div>
+}
 }
 @else{
-<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <div class="loading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
 }

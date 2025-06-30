@@ -1,0 +1,26 @@
+.container {
+    padding-top: 2rem;
+    width: 90%;
+    margin: auto;
+
+    &-top {
+        display: flex;
+
+        &-right {
+            padding: 0rem 2rem;
+
+            &-heading {
+                margin: 0;
+                font: var(--mat-sys-display-medium);
+            }
+
+            &-buybutton {
+                margin: 0.5rem 0;
+                width: 100%;
+            }
+        }
+    }
+    &-table{
+        margin: 2rem 0;
+    }
+}

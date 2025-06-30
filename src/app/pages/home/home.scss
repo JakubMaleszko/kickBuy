@@ -1,3 +1,15 @@
+.search-form{
+    width: calc(100% - 2rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    &-input {
+        width: 50%;
+    }
+}
+
 .main{
     width: 90%;
     margin: auto;

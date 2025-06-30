@@ -1,0 +1,17 @@
+<div class="slider-container">
+  <img
+    [src]="currentImage()"
+    class="slider-image fade"
+    alt="Slide Image"
+  />
+
+  <button matFab class="nav-btn left" (click)="prev()" [disabled]="canGoPrev()? false : true">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+
+
+  <button matFab class="nav-btn right" (click)="next()" [disabled]="canGoNext()? false : true">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+
+</div>

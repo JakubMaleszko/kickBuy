@@ -1,0 +1,50 @@
+@if (!store.loading()){
+<main class="container">
+    <div class="container-top">
+        <app-slider [images]="store.product()?.images || []" />
+        <div class="container-top-right">
+            <h1 class="container-top-right-heading"> {{store.product()?.title}} </h1>
+            <p> {{store.product()?.description}} </p>
+            <div class="container-top-right-info">Rating: <b> {{store.product()?.rating}} </b></div>
+            <div class="container-top-right-info">In stock: <b> {{store.product()?.stock}} </b></div>
+            <div class="container-top-right-info">Warrany: <b> {{store.product()?.warrantyInformation}} </b></div>
+            <div class="container-top-right-info">Shipping: <b> {{store.product()?.shippingInformation}} </b></div>
+
+            <button matFab extended class="container-top-right-buybutton">
+                <mat-icon>shopping_cart</mat-icon>
+                Buy it now
+            </button>
+            <button matFab extended class="container-top-right-buybutton">
+                <mat-icon>shopping_basket</mat-icon>
+                Add to cart
+            </button>
+        </div>
+    </div>
+    <table mat-table [dataSource]="productData" class="mat-elevation-z8 container-table">
+
+        <!-- Key Column -->
+        <ng-container matColumnDef="key">
+            <th mat-header-cell *matHeaderCellDef>Details</th>
+            <td mat-cell *matCellDef="let element"> {{ element.key }} </td>
+        </ng-container>
+
+        <!-- Value Column -->
+        <ng-container matColumnDef="value">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                {{element.value}}
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+</main>
+}
+@else {
+<div class="loading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+}

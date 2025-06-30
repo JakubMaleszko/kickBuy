@@ -1,0 +1,43 @@
+.slider-container {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  overflow: hidden;
+
+  .slider-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    background-color: white;
+    transition: opacity 0.4s ease-in-out;
+    opacity: 1;
+
+    &.fade {
+      animation: fadeIn 0.5s;
+    }
+  }
+
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+
+    &.left {
+      left: 10px;
+    }
+
+    &.right {
+      right: 10px;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}

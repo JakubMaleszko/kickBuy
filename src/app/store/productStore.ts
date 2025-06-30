@@ -7,6 +7,7 @@ import { catchError, of } from 'rxjs';
 
 type ProductState = {
     products: Product[];
+    product: Product | null;
     loading: boolean;
     query: string;
     currentPage: number;
@@ -19,6 +20,7 @@ type ProductState = {
 
 const initialProductState: ProductState = {
     products: [],
+    product: null,
     loading: false,
     query: '',
     currentPage: 1,
@@ -34,7 +36,7 @@ export const ProductStore = signalStore(
     withState(initialProductState),
     withComputed((store) => ({
         skip: computed(() => store.currentPage() * store.pageSize() - store.pageSize()),
-        totalPages: computed(() => Math.ceil(store.totalProducts() / store.pageSize())),
+        // totalPages: computed(() => Math.ceil(store.totalProducts() / store.pageSize())),
     })),
     withMethods((store, productService = inject(ProductService)) => ({
         getProducts() {
@@ -47,8 +49,7 @@ export const ProductStore = signalStore(
                 store.sortOrder()
             ).pipe(
                 tap((res: ProductResponse) => {
-                     patchState(store, { products: res.products, totalProducts: res.total, loading: false })
-                    console.log("Tiger");
+                    patchState(store, { products: res.products, totalProducts: res.total, loading: false })
                 }),
                 catchError((err) => {
                     patchState(store, { loading: false, error: 'Failed to load products' });
@@ -56,12 +57,33 @@ export const ProductStore = signalStore(
                 })
             ).subscribe()
         },
+        getProductById(id: number) {
+            patchState(store, { loading: true, product: null, error: '' });
+
+            productService.getProductById(id).pipe(
+                tap((product) => {
+                    patchState(store, { product, loading: false });
+                }),
+                catchError((err) => {
+                    patchState(store, { loading: false, error: 'Failed to load product' });
+                    return of(err);
+                })
+            ).subscribe();
+        },
+        // {{ Set stuff }}
         setQuery(query: string) {
             patchState(store, { query: query });
         },
         setSort(sortBy: string, sortOrder: 'asc' | 'desc') {
             patchState(store, { sortBy: sortBy, sortOrder: sortOrder })
+        },
+        setPageSize(size: number) {
+            patchState(store, { pageSize: size });
+        },
+        setCurrentPage(page: number) {
+            patchState(store, { currentPage: page });
         }
+
     })
     )
 )
