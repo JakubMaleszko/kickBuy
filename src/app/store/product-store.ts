@@ -1,6 +1,6 @@
 import { signalStore, withState, withMethods, withComputed, withHooks, patchState } from "@ngrx/signals";
 import { Product, ProductResponse } from "../types";
-import { ProductService } from '../services/product.service';
+import { ProductService } from '../services/product-service';
 import { inject, computed, LOCALE_ID } from "@angular/core";
 import { map, pipe, switchMap, tap } from "rxjs";
 import { catchError, of } from 'rxjs';

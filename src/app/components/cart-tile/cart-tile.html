@@ -1,0 +1,13 @@
+<a [routerLink]="link()">
+<div class="tile">
+    <div class="tile-image">
+        <img [src]="img()" alt="product image">
+    </div>
+    <div class="tile-right">
+        <div class="tile-right-top">
+            <h3 class="tile-right-top-header">{{title()}}</h3>
+            <h3 class="tile-right-top-price">{{price()}} $</h3>
+        </div>
+    </div>
+</div>
+</a>

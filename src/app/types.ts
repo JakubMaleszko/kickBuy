@@ -46,3 +46,50 @@ export type ProductResponse = {
   skip: number;
   limit: number;
 };
+
+export type Cart = {
+  id: number;
+  products: Product[];
+  total: number;
+  userId: number;
+  totalProducts: number;
+  totalQuantity: number;
+};
+export type CartResponse = {
+  carts: Cart[];
+  total: number;
+  skip: number;
+  limit: number;
+}
+
+export type User = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  age: number;
+  gender: 'male' | 'female' | string;
+  email: string;
+  phone: string;
+  username: string;
+  image: string;
+  address: {
+    address: string;
+    city: string;
+    state: string;
+    stateCode: string;
+    postalCode: string;
+    coordinates: {
+      lat: number;
+      lng: number;
+    };
+    country: string;
+  };
+  bank: {
+    cardExpire: string;  // MM/YY format
+    cardNumber: string;
+    cardType: string;
+    currency: string;
+    iban: string;
+  };
+}
+
