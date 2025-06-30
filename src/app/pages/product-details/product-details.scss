@@ -1,26 +1,48 @@
 .container {
-    padding-top: 2rem;
-    width: 90%;
-    margin: auto;
+  padding-top: 2rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+
+  &-top {
+    display: flex;
+    flex-wrap: wrap; 
+
+    &-right {
+      padding: 0 2rem;
+      flex: 1 1 300px; 
+      box-sizing: border-box;
+
+      &-heading {
+        margin: 0;
+        font: var(--mat-sys-display-medium);
+      }
+
+      &-buybutton {
+        margin: 0.5rem 0;
+        width: 100%;
+      }
+    }
+  }
+
+  &-table {
+    margin: 2rem 0;
+    overflow-x: auto; 
+  }
+}
+
+// Media queries for smaller screens
+@media (max-width: 1015px) {
+  .container {
+    width: 95%;
 
     &-top {
-        display: flex;
+      flex-direction: column;
+      gap: 1rem;
 
-        &-right {
-            padding: 0rem 2rem;
-
-            &-heading {
-                margin: 0;
-                font: var(--mat-sys-display-medium);
-            }
-
-            &-buybutton {
-                margin: 0.5rem 0;
-                width: 100%;
-            }
-        }
+      &-right {
+        padding: 0 1rem;
+      }
     }
-    &-table{
-        margin: 2rem 0;
-    }
+  }
 }

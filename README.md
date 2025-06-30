@@ -1,7 +1,12 @@
 # KickBuy
-Example login data:
-username: emilys
-password: emilspass
+### Example login data:
+
+username: emilys, noramx
+
+password: emilspass, noramxpass
+
+## Goal
+The project focuses primarily on application logic — including JWT implementation, state management using SignalStore, and backend integration. The graphical user interface was of secondary importance in this case.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
 

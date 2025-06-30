@@ -1,0 +1,18 @@
+<app-toolbar />
+@if (!store.loading()) {
+  <div class="profile">
+    <div class="profile-top">
+      <img [src]="store.user()?.image" alt="Profile Picture" />
+    </div>
+    <div class="profile-mid">
+      <h2>{{ store.user()?.firstName }} {{ store.user()?.lastName }}</h2>
+      <p>Email: {{ store.user()?.email }}</p>
+      <p>Phone: {{ store.user()?.phone }}</p>
+      <p>Username: {{ store.user()?.username }}</p>
+    </div>
+  </div>
+} @else {
+  <div class="loading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+}

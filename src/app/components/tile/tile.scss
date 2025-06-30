@@ -47,8 +47,17 @@ a {
   }
 }
 
-// Responsive: stack vertically on smaller screens
-@media (max-width: 768px) {
+@media only screen and (max-width: 900px) {
+.tile-right-top-info{
+  padding: 0.5 0;
+}
+.tile-right-top-header,
+.tile-right-top-price {
+        font: var(--mat-sys-headline-small);
+}
+}
+
+@media (max-width: 820px) {
   .tile {
     flex-direction: column;
     height: auto;

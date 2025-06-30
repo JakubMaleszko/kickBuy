@@ -1,12 +1,15 @@
 .slider-container {
   position: relative;
-  width: 600px;
-  height: 600px;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 1 / 1; // Keep it square
+  margin: auto;
   overflow: hidden;
 
   .slider-image {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     border-radius: 8px;
     background-color: white;
     transition: opacity 0.4s ease-in-out;

@@ -4,4 +4,7 @@
     <button routerLink="/cart" matIconButton aria-label="Example icon button with a vertical three dot icon">
         <mat-icon>shopping_cart</mat-icon>
     </button>
+    @if(store.user()) {
+        <img class="toolbar-profile-pic" [src]="store.user()?.image" routerLink="/profile">
+    }
 </mat-toolbar>
