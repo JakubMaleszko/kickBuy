@@ -1,33 +1,33 @@
 .container {
-    padding-top: 2rem;
+    padding: 2rem 0;
     width: 90%;
     margin: auto;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 2rem;
 
     &-left,
     &-right {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
     }
 
     &-left {
-        width: 55%;
+        width: 60%;
+        gap: 1rem;
     }
 
     &-right {
-        width: 40%;
-        font: var(--mat-sys-body-large);
-
+        width: 35%;
+        font: var(--mat-sys-headline-small);
+        gap: 2rem;
         &-heading {
             margin: 0;
             font: var(--mat-sys-display-medium);
         }
     }
 
-    // Responsive styles
     @media (max-width: 768px) {
         flex-direction: column;
 
@@ -35,5 +35,17 @@
         &-right {
             width: 100%;
         }
+    }
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    flex-direction: column;
+
+    &-text {
+        font: var(--mat-sys-display-large);
     }
 }

@@ -14,13 +14,10 @@ export class UserService {
     return this.http.get<User>(`${this.baseUrl}/me`);
   }
 
-  updateUser(id: number, payload: Partial<User>) {
-  return this.http.put<User>(`https://dummyjson.com/users/${id}`, payload);
-}
 
-getCart(userId: number): Observable<Cart | null> {
-  return this.http.get<CartResponse>(`https://dummyjson.com/carts/user/${userId}`).pipe(
-    map(response => response.carts.length > 0 ? response.carts[0] : null)
-  );
-}
+  getCart(userId: number): Observable<Cart | null> {
+    return this.http.get<CartResponse>(`https://dummyjson.com/carts/user/${userId}`).pipe(
+      map(response => response.carts.length > 0 ? response.carts[0] : null)
+    );
+  }
 }

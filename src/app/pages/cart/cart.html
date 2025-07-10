@@ -1,34 +1,35 @@
-<app-toolbar />
-
 @if (!store.loading()) {
-<main class="container" style="display: flex; gap: 2rem;">
-  <div class="container-left" style="flex: 3;">
-    @if (store.cart()?.products?.length) {
+@if (store.cart()?.products?.length) {
+<main class="container">
+  <div class="container-left">
     @for (item of store.cart()!.products; track item.id) {
     <app-cart-tile [title]="item.title" [price]="item.price" [img]="item.thumbnail" [link]="['/product', item.id]">
 
     </app-cart-tile>
     }
-    } @else {
-    <p>Cart is empty.</p>
-    }
+
   </div>
-  @if (store.cart()?.products?.length) {
+
   <div class="container-right">
 
-    <h2>Order Summary</h2>
-    <p>Total Products: {{ store.cart()?.totalProducts }}</p>
-    <p>Total Quantity: {{ store.cart()?.totalQuantity }}</p>
-    <p>Total Price: ${{ store.cart()?.total?.toFixed(2) }}</p>
+    <div class="container-right-heading">Order Summary</div>
+    <span>Total Products:<b> {{ store.cart()?.totalProducts }}</b></span>
+    <span>Total Quantity:<b> {{ store.cart()?.totalQuantity }}</b></span>
+    <span>Total Price: <b>{{ store.cart()?.total?.toFixed(2) }}$</b></span>
 
     <button mat-fab extended class="container-top-right-buybutton">
       <mat-icon>shopping_cart</mat-icon>
       Buy it now
     </button>
-    
+
   </div>
-}
+
 </main>
+}@else {
+  <div class="center">
+    <p class="center-text">Cart is empty</p>
+</div>
+}
 } @else {
 <div class="loading">
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>

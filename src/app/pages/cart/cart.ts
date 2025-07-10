@@ -3,12 +3,11 @@ import { CartStore } from '../../store/cart-store';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CartTile } from "../../components/cart-tile/cart-tile";
-import { MatButtonModule } from '@angular/material/button';
-import { Toolbar } from "../../components/toolbar/toolbar";
+import { MatButtonModule } from '@angular/material/button';;
 
 @Component({
   selector: 'app-cart',
-  imports: [MatIconModule, MatProgressBarModule, CartTile, MatButtonModule, Toolbar],
+  imports: [MatIconModule, MatProgressBarModule, CartTile, MatButtonModule],
   templateUrl: './cart.html',
   styleUrl: './cart.scss'
 })

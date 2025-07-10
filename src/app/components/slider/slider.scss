@@ -1,8 +1,8 @@
 .slider-container {
   position: relative;
   width: 100%;
+  aspect-ratio: 1 / 1;
   max-width: 600px;
-  aspect-ratio: 1 / 1; // Keep it square
   margin: auto;
   overflow: hidden;
 

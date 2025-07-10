@@ -1,10 +1,10 @@
 .search-form{
-    width: calc(100% - 2rem);
+    width: calc(100% - 4rem);
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    padding: 1rem;
+    padding: 2rem;
     &-input {
         width: 50%;
     }
@@ -17,7 +17,7 @@
     flex-direction: column;
     gap: 1rem;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 820px) {
     .main{
         width: 95%;
     }

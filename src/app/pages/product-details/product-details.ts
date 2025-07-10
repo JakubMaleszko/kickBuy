@@ -6,12 +6,10 @@ import { MatProgressBar } from '@angular/material/progress-bar';
 import {  MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-import { MatToolbar } from '@angular/material/toolbar';
-import { Toolbar } from "../../components/toolbar/toolbar";
 
 @Component({
   selector: 'app-product-details',
-  imports: [Slider, MatProgressBar, MatButtonModule, MatIconModule, MatTableModule, Toolbar],
+  imports: [Slider, MatProgressBar, MatButtonModule, MatIconModule, MatTableModule,],
   templateUrl: './product-details.html',
   styleUrl: './product-details.scss'
 })

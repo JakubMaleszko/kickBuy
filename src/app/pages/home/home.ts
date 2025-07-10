@@ -11,12 +11,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule, FormGroup } from '@angular/forms';
-import { Toolbar } from "../../components/toolbar/toolbar";
 @Component({
   selector: 'app-home',
   imports: [MatToolbarModule, Tile, MatProgressBarModule, MatFormFieldModule,
     MatPaginatorModule, MatInputModule, MatButtonModule, MatIconModule,
-    ReactiveFormsModule, Toolbar],
+    ReactiveFormsModule],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
